@@ -1,76 +1,57 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import HeroSection from '../components/common/HeroSection';
-
-const blogPosts = [
-  {
-    slug: 'iit-problem-solving-approach',
-    title: 'What is IIT-Style Problem Solving and Why Does It Work?',
-    excerpt:
-      'Discover the systematic approach that has helped thousands of students master STEM subjects through rigorous analytical thinking.',
-    category: 'Teaching Methodology',
-    date: '2026-06-15',
-    readTime: '5 min read',
-  },
-  {
-    slug: 'ap-physics-preparation-guide',
-    title: 'The Complete Guide to AP Physics Preparation',
-    excerpt:
-      'Everything you need to know to score a 5 on AP Physics exams, from study strategies to common pitfalls to avoid.',
-    category: 'AP Preparation',
-    date: '2026-06-10',
-    readTime: '8 min read',
-  },
-  {
-    slug: 'building-strong-math-foundation',
-    title: 'Building a Strong Math Foundation in Grades 8-10',
-    excerpt:
-      'Why the middle school years are critical for STEM success and how to ensure your child develops strong fundamentals.',
-    category: 'Mathematics',
-    date: '2026-06-05',
-    readTime: '6 min read',
-  },
-  {
-    slug: 'chemistry-concepts-visualization',
-    title: 'How to Help Students Visualize Abstract Chemistry Concepts',
-    excerpt:
-      'Practical techniques for making complex chemistry topics like molecular orbitals and reaction mechanisms more intuitive.',
-    category: 'Chemistry',
-    date: '2026-05-28',
-    readTime: '7 min read',
-  },
-  {
-    slug: 'stem-competitions-worth-it',
-    title: 'Are STEM Competitions Worth It for Your Child?',
-    excerpt:
-      'Weighing the benefits and considerations of Math Olympiads, Science Bowls, and other competitive STEM activities.',
-    category: 'Student Success',
-    date: '2026-05-20',
-    readTime: '5 min read',
-  },
-  {
-    slug: 'choosing-right-ap-courses',
-    title: 'Choosing the Right AP STEM Courses for College Admissions',
-    excerpt:
-      'Strategic guidance on selecting AP Math and Science courses that align with your college and career goals.',
-    category: 'College Prep',
-    date: '2026-05-15',
-    readTime: '6 min read',
-  },
-];
-
-const categories = [
-  'All Posts',
-  'Teaching Methodology',
-  'AP Preparation',
-  'Mathematics',
-  'Physics',
-  'Chemistry',
-  'Student Success',
-  'College Prep',
-];
+import {
+  getAllBlogPosts,
+  getCategories,
+  filterByCategory,
+  searchPosts,
+  type BlogPost,
+} from '../lib/blogService';
 
 export default function Blog() {
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
+  const [categories, setCategories] = useState<string[]>(['All Posts']);
+  const [selectedCategory, setSelectedCategory] = useState('All Posts');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadBlogs() {
+      setIsLoading(true);
+      try {
+        const posts = await getAllBlogPosts();
+        setAllPosts(posts);
+        setFilteredPosts(posts);
+        setCategories(getCategories(posts));
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+        setAllPosts([]);
+        setFilteredPosts([]);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadBlogs();
+  }, []);
+
+  useEffect(() => {
+    let posts = filterByCategory(allPosts, selectedCategory);
+    if (searchQuery.trim()) {
+      posts = searchPosts(posts, searchQuery);
+    }
+    setFilteredPosts(posts);
+  }, [selectedCategory, searchQuery, allPosts]);
+
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
   return (
     <>
       <SEO
@@ -89,7 +70,30 @@ export default function Blog() {
 
       <section className="section-padding bg-white">
         <div className="section-container max-w-6xl">
-          <div className="mb-12">
+          <div className="mb-8">
+            <div className="relative max-w-xl mb-8">
+              <input
+                type="text"
+                placeholder="Search blog posts..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="w-full px-6 py-3 pl-12 rounded-full border-2 border-gray-300 focus:border-secondary focus:outline-none text-gray-700"
+              />
+              <svg
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+
             <h2 className="text-3xl font-bold text-primary mb-6">
               Browse by Category
             </h2>
@@ -97,7 +101,12 @@ export default function Blog() {
               {categories.map((category) => (
                 <button
                   key={category}
-                  className="px-4 py-2 rounded-full border-2 border-secondary text-secondary hover:bg-secondary hover:text-white transition-colors font-medium"
+                  onClick={() => handleCategoryClick(category)}
+                  className={`px-4 py-2 rounded-full border-2 transition-colors font-medium ${
+                    selectedCategory === category
+                      ? 'bg-secondary text-white border-secondary'
+                      : 'border-secondary text-secondary hover:bg-secondary hover:text-white'
+                  }`}
                 >
                   {category}
                 </button>
@@ -105,34 +114,113 @@ export default function Blog() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <Link
-                key={post.slug}
-                to={`/blog/${post.slug}`}
-                className="card hover:scale-105"
-              >
-                <div className="mb-4">
-                  <span className="inline-block bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">
-                    {post.category}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3 hover:text-secondary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <span>{post.date}</span>
-                  <span>{post.readTime}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-secondary"></div>
+              <p className="text-gray-600 mt-4">Loading blog posts...</p>
+            </div>
+          ) : filteredPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600 text-lg">
+                {searchQuery
+                  ? `No posts found matching "${searchQuery}"`
+                  : 'No posts available in this category'}
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredPosts.map((post) => {
+                  if (post.externalUrl) {
+                    return (
+                      <a
+                        key={post.id}
+                        href={post.externalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card hover:scale-105"
+                      >
+                        {post.imageUrl && (
+                          <div className="mb-4 rounded-lg overflow-hidden">
+                            <img
+                              src={post.imageUrl}
+                              alt={post.title}
+                              className="w-full h-48 object-cover"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                              }}
+                            />
+                          </div>
+                        )}
+                        <div className="mb-4">
+                          <span className="inline-block bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">
+                            {post.category}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold text-primary mb-3 hover:text-secondary transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                        <div className="flex items-center justify-between text-sm text-gray-500">
+                          <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                          {post.readTime && <span>{post.readTime}</span>}
+                        </div>
+                        <div className="mt-2 flex items-center text-secondary text-sm">
+                          <span>Read more</span>
+                          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </div>
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={post.id}
+                      to={`/blog/${post.slug}`}
+                      className="card hover:scale-105"
+                    >
+                      {post.imageUrl && (
+                        <div className="mb-4 rounded-lg overflow-hidden">
+                          <img
+                            src={post.imageUrl}
+                            alt={post.title}
+                            className="w-full h-48 object-cover"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        </div>
+                      )}
+                      <div className="mb-4">
+                        <span className="inline-block bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm font-semibold">
+                          {post.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-primary mb-3 hover:text-secondary transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                        {post.readTime && <span>{post.readTime}</span>}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <div className="mt-12 text-center">
+                <p className="text-gray-600 mb-4">
+                  Showing {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
+                  {selectedCategory !== 'All Posts' && ` in ${selectedCategory}`}
+                </p>
+              </div>
+            </>
+          )}
 
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
-              More articles coming soon! Subscribe to get notified.
-            </p>
             <Link to="/contact" className="btn btn-secondary">
               Subscribe to Newsletter
             </Link>

@@ -21,12 +21,24 @@ export default function About() {
       <section className="section-padding bg-white">
         <div className="section-container max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-gradient-to-br from-secondary to-blue-700 rounded-2xl aspect-square flex items-center justify-center text-white">
-              <div className="text-center p-8">
-                <div className="text-8xl font-bold mb-4">MP</div>
-                <p className="text-xl">Engineering Professional</p>
-                <p className="text-lg">STEM Educator</p>
-              </div>
+            <div className="rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-secondary to-blue-700">
+              <img
+                src="/manu-pande-profile.jpg"
+                alt="Manu Pande - Engineering Professional and STEM Educator"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = `
+                    <div class="aspect-square flex items-center justify-center text-white p-8">
+                      <div class="text-center">
+                        <div class="text-8xl font-bold mb-4">MP</div>
+                        <p class="text-xl">Engineering Professional</p>
+                        <p class="text-lg">STEM Educator</p>
+                      </div>
+                    </div>
+                  `;
+                }}
+              />
             </div>
 
             <div>

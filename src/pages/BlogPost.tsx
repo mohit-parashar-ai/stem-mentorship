@@ -1,15 +1,64 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import SEO from '../components/common/SEO';
 import CTABanner from '../components/common/CTABanner';
+import { getAllBlogPosts, type BlogPost as BlogPostType } from '../lib/blogService';
 
 export default function BlogPost() {
   const { slug } = useParams();
+  const [post, setPost] = useState<BlogPostType | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadPost() {
+      setIsLoading(true);
+      try {
+        const allPosts = await getAllBlogPosts();
+        const foundPost = allPosts.find((p) => p.slug === slug);
+
+        if (foundPost) {
+          setPost(foundPost);
+
+          const related = allPosts
+            .filter((p) => p.category === foundPost.category && p.slug !== slug)
+            .slice(0, 2);
+          setRelatedPosts(related);
+        }
+      } catch (error) {
+        console.error('Error loading blog post:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadPost();
+  }, [slug]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-secondary"></div>
+          <p className="text-gray-600 mt-4">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!post) {
+    return <Navigate to="/blog" replace />;
+  }
+
+  if (post.externalUrl) {
+    window.location.href = post.externalUrl;
+    return null;
+  }
 
   return (
     <>
       <SEO
-        title="Blog Post"
-        description="Read this insightful article about STEM education and problem-solving strategies."
+        title={post.title}
+        description={post.excerpt}
         canonicalUrl={`/blog/${slug}`}
       />
 
@@ -37,19 +86,33 @@ export default function BlogPost() {
             </Link>
           </div>
 
+          {post.imageUrl && (
+            <div className="mb-8 rounded-xl overflow-hidden">
+              <img
+                src={post.imageUrl}
+                alt={post.title}
+                className="w-full h-96 object-cover"
+              />
+            </div>
+          )}
+
           <div className="mb-8">
             <span className="inline-block bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Teaching Methodology
+              {post.category}
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Sample Blog Post: {slug}
+              {post.title}
             </h1>
             <div className="flex items-center text-gray-600 space-x-4">
-              <span>By Manu Pande</span>
+              <span>By {post.author || 'Manu Pande'}</span>
               <span>•</span>
-              <span>June 15, 2026</span>
-              <span>•</span>
-              <span>5 min read</span>
+              <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              {post.readTime && (
+                <>
+                  <span>•</span>
+                  <span>{post.readTime}</span>
+                </>
+              )}
             </div>
           </div>
 
@@ -63,9 +126,7 @@ export default function BlogPost() {
             </div>
 
             <p className="lead text-xl text-gray-700 mb-6">
-              This is where your blog post content would appear. You can integrate
-              with a headless CMS like Contentful, Sanity, or use local markdown
-              files with frontmatter for static generation.
+              {post.excerpt}
             </p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">
@@ -125,37 +186,32 @@ export default function BlogPost() {
             </div>
           </div>
 
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-primary mb-6">
-              Related Articles
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Link to="/blog/related-post-1" className="card hover:scale-105">
-                <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-semibold mb-3">
-                  AP Preparation
-                </span>
-                <h4 className="text-lg font-bold text-primary mb-2">
-                  Related Blog Post Title One
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Brief excerpt of the related post to entice readers to click
-                  through and read more.
-                </p>
-              </Link>
-              <Link to="/blog/related-post-2" className="card hover:scale-105">
-                <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-semibold mb-3">
-                  Mathematics
-                </span>
-                <h4 className="text-lg font-bold text-primary mb-2">
-                  Another Related Article Title
-                </h4>
-                <p className="text-gray-600 text-sm">
-                  Short description to give context about what this article covers
-                  and why it's relevant.
-                </p>
-              </Link>
+          {relatedPosts.length > 0 && (
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-primary mb-6">
+                Related Articles
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {relatedPosts.map((relatedPost) => (
+                  <Link
+                    key={relatedPost.id}
+                    to={`/blog/${relatedPost.slug}`}
+                    className="card hover:scale-105"
+                  >
+                    <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-semibold mb-3">
+                      {relatedPost.category}
+                    </span>
+                    <h4 className="text-lg font-bold text-primary mb-2">
+                      {relatedPost.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {relatedPost.excerpt}
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </article>
 

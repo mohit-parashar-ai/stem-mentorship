@@ -53,7 +53,7 @@ export default function Assessment() {
       });
     } catch (err) {
       setError(
-        'Something went wrong. Please try again or email us directly at manu@stemmentorship.com'
+        'Something went wrong. Please try again or email us directly at support@foiclasses.com'
       );
       console.error(err);
     } finally {

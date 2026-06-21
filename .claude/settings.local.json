@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Read(//Users/mohitparashar/.pixel-agents/hooks/**)"
+      "Read(//Users/mohitparashar/.pixel-agents/hooks/**)",
+      "WebFetch(domain:foiclasses.com)"
     ]
   }
 }

@@ -51,6 +51,12 @@ Complete list of all 190+ features implemented in the website.
 ### [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)
 Comprehensive project overview, specifications, and deliverables.
 
+### [BLOG_INTEGRATION.md](BLOG_INTEGRATION.md)
+Complete guide to blog integration with category filtering and search.
+
+### [BLOG_UPDATE_SUMMARY.md](BLOG_UPDATE_SUMMARY.md)
+Summary of blog integration update and implementation details.
+
 ---
 
 ## 🚢 Deployment
@@ -98,13 +104,17 @@ docs/
 │
 ├── Branding
 │   ├── LOGO_INSTRUCTIONS.md
+│   ├── LOGO_UPDATED.md
+│   ├── ADD_PROFILE_IMAGE.md
+│   ├── LOGO_OPTIMIZATION.md
 │   ├── BRANDING_UPDATE.md
 │   └── ADD_LOGO.md
 │
 ├── Features & Info
 │   ├── FEATURES.md
 │   ├── PROJECT_SUMMARY.md
-│   └── EXPANSION_SUMMARY.md
+│   ├── EXPANSION_SUMMARY.md
+│   └── CHANGES.md
 │
 └── Deployment
     └── DEPLOYMENT.md
@@ -122,6 +132,7 @@ docs/
 | **Add my logo** | [LOGO_INSTRUCTIONS.md](LOGO_INSTRUCTIONS.md) |
 | **Fix form errors** | [FIX_PERMISSIONS.md](FIX_PERMISSIONS.md) |
 | **Deploy to production** | [DEPLOYMENT.md](DEPLOYMENT.md) |
+| **Manage blog posts** | [BLOG_INTEGRATION.md](BLOG_INTEGRATION.md) |
 | **See all features** | [FEATURES.md](FEATURES.md) |
 | **Understand the project** | [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md) |
 

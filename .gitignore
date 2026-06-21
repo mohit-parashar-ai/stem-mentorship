@@ -6,3 +6,6 @@ node_modules/
 .claude/.simplify-ignore-cache/
 .claude/sdd-cache/
 dist/
+
+# Temporary instruction files
+public/PLACE_PROFILE_IMAGE_HERE.txt
