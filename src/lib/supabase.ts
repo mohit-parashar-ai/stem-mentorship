@@ -37,20 +37,19 @@ export interface ConsultationBooking {
 }
 
 export async function submitLead(lead: Lead) {
-  const { data, error } = await supabase.from('leads').insert([lead]).select();
+  const { error } = await supabase.from('leads').insert([lead]);
 
   if (error) throw error;
-  return data;
+  return { success: true };
 }
 
 export async function submitConsultationBooking(
   booking: ConsultationBooking
 ) {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('consultation_bookings')
-    .insert([booking])
-    .select();
+    .insert([booking]);
 
   if (error) throw error;
-  return data;
+  return { success: true };
 }
