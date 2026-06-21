@@ -57,7 +57,7 @@ export default function SEO({
             description:
               'Engineering professional with 15+ years of teaching experience',
           },
-          areaServed: ['United States', 'Canada', 'UAE', 'Saudi Arabia', 'Qatar'],
+          areaServed: ['United States', 'Canada', 'United Kingdom', 'Australia', 'UAE', 'Saudi Arabia', 'Qatar'],
           educationalLevel: 'Secondary Education',
           courseMode: 'Online',
         })}

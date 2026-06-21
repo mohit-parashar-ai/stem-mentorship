@@ -11,7 +11,7 @@ A production-ready, premium website for Manu Pande's STEM tutoring and mentorshi
 ### Business Requirements Met
 
 ✅ **Premium Positioning**: Clean, trustworthy design inspired by Stanford and MasterClass  
-✅ **Global Targeting**: Optimized for USA, Canada, UAE, Saudi Arabia, Qatar  
+✅ **Global Targeting**: Optimized for USA, Canada, UK, Australia, UAE, Saudi Arabia, Qatar  
 ✅ **Lead Generation**: Multiple conversion points with direct Supabase integration  
 ✅ **SEO Optimized**: Complete on-page SEO, meta tags, structured data  
 ✅ **Mobile Responsive**: Works flawlessly on all devices  
@@ -474,7 +474,7 @@ All components follow atomic design principles:
 ## 🎯 Target Audience Alignment
 
 ✅ **Parents** of students Grades 8-12  
-✅ **Geography**: USA, Canada, UAE, Saudi Arabia, Qatar  
+✅ **Geography**: USA, Canada, UK, Australia, UAE, Saudi Arabia, Qatar  
 ✅ **Subjects**: Math, Physics, Chemistry  
 ✅ **Programs**: Foundation, Advanced, AP, 1:1 Mentorship  
 ✅ **Value Prop**: IIT-style problem solving, proven results  

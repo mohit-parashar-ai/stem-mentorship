@@ -4,7 +4,7 @@ A premium, production-ready website for Manu Pande's STEM tutoring and mentorshi
 
 ## 🎯 Project Overview
 
-This website showcases a premium STEM tutoring business offering IIT-style problem-solving mentorship in Mathematics, Physics, and Chemistry for students in Grades 8-12 across USA, Canada, UAE, Saudi Arabia, and Qatar.
+This website showcases a premium STEM tutoring business offering IIT-style problem-solving mentorship in Mathematics, Physics, and Chemistry for students in Grades 8-12 across USA, Canada, United Kingdom, Australia, UAE, Saudi Arabia, and Qatar.
 
 ### Key Features
 

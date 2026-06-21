@@ -3,7 +3,7 @@ import SEO from '../components/common/SEO';
 import HeroSection from '../components/common/HeroSection';
 import { submitConsultationBooking } from '../lib/supabase';
 
-const countries = ['USA', 'Canada', 'UAE', 'Saudi Arabia', 'Qatar', 'Other'];
+const countries = ['USA', 'Canada', 'United Kingdom', 'Australia', 'UAE', 'Saudi Arabia', 'Qatar', 'Other'];
 const grades = ['Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
 
 export default function Assessment() {

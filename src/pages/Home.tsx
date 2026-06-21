@@ -22,7 +22,7 @@ const whyChoose = [
     icon: '🌍',
     title: 'Global Reach',
     description:
-      'Serving students across USA, Canada, UAE, Saudi Arabia, and Qatar.',
+      'Serving students across USA, Canada, UK, Australia, UAE, Saudi Arabia, and Qatar.',
   },
   {
     icon: '📈',

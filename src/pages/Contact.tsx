@@ -3,7 +3,7 @@ import SEO from '../components/common/SEO';
 import HeroSection from '../components/common/HeroSection';
 import { submitLead } from '../lib/supabase';
 
-const countries = ['USA', 'Canada', 'UAE', 'Saudi Arabia', 'Qatar', 'Other'];
+const countries = ['USA', 'Canada', 'United Kingdom', 'Australia', 'UAE', 'Saudi Arabia', 'Qatar', 'Other'];
 const grades = ['Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'];
 const subjects = ['Mathematics', 'Physics', 'Chemistry', 'All Subjects'];
 
@@ -198,7 +198,7 @@ export default function Contact() {
                       Serving
                     </h3>
                     <p className="text-gray-600">
-                      USA, Canada, UAE, Saudi Arabia, Qatar
+                      USA, Canada, UK, Australia, UAE, Saudi Arabia, Qatar
                     </p>
                   </div>
                 </div>

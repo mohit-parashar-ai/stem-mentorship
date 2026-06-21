@@ -257,7 +257,7 @@ colors: {
 This website is **production-ready**. Every feature requested has been implemented:
 
 ✅ Premium design  
-✅ Global positioning (USA, Canada, UAE, Saudi Arabia, Qatar)  
+✅ Global positioning (USA, Canada, UK, Australia, UAE, Saudi Arabia, Qatar)  
 ✅ Lead generation  
 ✅ SEO optimized  
 ✅ Mobile responsive  
