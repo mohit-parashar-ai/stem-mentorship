@@ -20,13 +20,12 @@ export default function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="section-container">
         <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-primary">
-              Manu Pande
-              <span className="block text-xs font-normal text-gray-600">
-                STEM Mentorship
-              </span>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/foi-logo.png"
+              alt="Future of International Classes - STEM Mentorship by Manu Pande"
+              className="h-16 w-16 object-contain"
+            />
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">

@@ -9,7 +9,7 @@ const testimonials = [
     role: 'Parent of Grade 11 Student',
     country: 'USA',
     content:
-      "Manu's teaching transformed my daughter's approach to Physics. She went from struggling to scoring in the top 5% of her AP Physics class. His IIT-style methodology helped her understand concepts at a much deeper level.",
+      "FOI's teaching transformed my daughter's approach to Physics. She went from struggling to scoring in the top 5% of her AP Physics class. The IIT-style methodology helped her understand concepts at a much deeper level.",
     rating: 5,
   },
   {
@@ -25,7 +25,7 @@ const testimonials = [
     role: 'Parent of Grade 12 Student',
     country: 'Canada',
     content:
-      "Exceptional mentor! Manu helped our daughter secure admission to her dream engineering program at the University of Toronto with a strong foundation in STEM. She credits him for her 95+ average in Physics and Calculus.",
+      "Exceptional mentor! FOI helped our daughter secure admission to her dream engineering program at the University of Toronto with a strong foundation in STEM. She credits them for her 95+ average in Physics and Calculus.",
     rating: 5,
   },
   {
@@ -33,7 +33,7 @@ const testimonials = [
     role: 'Parent of Grade 9 Student',
     country: 'USA',
     content:
-      "My son was getting B's in Math and Chemistry. Within 3 months of working with Manu, he's consistently scoring A's and actually looks forward to his sessions. The personalized attention and clear explanations made all the difference.",
+      "My son was getting B's in Math and Chemistry. Within 3 months of working with FOI, he's consistently scoring A's and actually looks forward to his sessions. The personalized attention and clear explanations made all the difference.",
     rating: 5,
   },
   {
@@ -41,7 +41,7 @@ const testimonials = [
     role: 'Parent of Grade 12 Student',
     country: 'USA',
     content:
-      "Manu prepared my daughter for AP Chemistry and AP Calculus BC. She scored 5 on both exams! His structured approach, practice problems, and exam strategies were invaluable. Highly recommend for AP preparation.",
+      "FOI prepared my daughter for AP Chemistry and AP Calculus BC. She scored 5 on both exams! Their structured approach, practice problems, and exam strategies were invaluable. Highly recommend for AP preparation.",
     rating: 5,
   },
   {
@@ -49,7 +49,7 @@ const testimonials = [
     role: 'Parent of Grade 11 Student',
     country: 'Saudi Arabia',
     content:
-      "Outstanding educator with deep subject knowledge. My son's analytical thinking has improved dramatically. Manu doesn't just teach formulas; he teaches how to think like an engineer and approach problems systematically.",
+      "Outstanding educator with deep subject knowledge. My son's analytical thinking has improved dramatically. FOI doesn't just teach formulas; they teach how to think like an engineer and approach problems systematically.",
     rating: 5,
   },
   {
@@ -57,7 +57,7 @@ const testimonials = [
     role: 'Parent of Grade 10 Student',
     country: 'Canada',
     content:
-      "The best STEM tutor we've worked with. Manu is patient, knowledgeable, and genuinely cares about student success. Our daughter's confidence in Math has soared, and she's now considering engineering for college.",
+      "The best STEM tutor we've worked with. FOI is patient, knowledgeable, and genuinely cares about student success. Our daughter's confidence in Math has soared, and she's now considering engineering for college.",
     rating: 5,
   },
   {
@@ -65,7 +65,7 @@ const testimonials = [
     role: 'Parent of Grade 12 Student',
     country: 'USA',
     content:
-      "Manu helped our son prepare for the Math Olympiad while also keeping his regular coursework strong. His ability to challenge advanced students while building fundamentals is remarkable. Son got into MIT!",
+      "FOI helped our son prepare for the Math Olympiad while also keeping his regular coursework strong. Their ability to challenge advanced students while building fundamentals is remarkable. Son got into MIT!",
     rating: 5,
   },
   {
@@ -73,7 +73,7 @@ const testimonials = [
     role: 'Parent of Grade 9 Student',
     country: 'Qatar',
     content:
-      "We tried three different tutors before finding Manu. He's in a different league. His teaching style is engaging, his explanations are crystal clear, and he adapts to my daughter's learning pace perfectly.",
+      "We tried three different tutors before finding FOI. They're in a different league. Their teaching style is engaging, their explanations are crystal clear, and they adapt to my daughter's learning pace perfectly.",
     rating: 5,
   },
 ];
@@ -89,7 +89,7 @@ export default function Testimonials() {
 
       <HeroSection
         title="Success Stories from Around the Globe"
-        subtitle="Real results from students and parents who trust Manu's IIT-style STEM mentorship"
+        subtitle="Real results from students and parents who trust FOI's IIT-style STEM mentorship"
       />
 
       <section className="section-padding bg-white">

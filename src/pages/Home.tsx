@@ -67,7 +67,7 @@ const journey = [
     step: '3',
     title: 'Live Sessions',
     description:
-      'Engage in interactive 1:1 or small group sessions with Manu.',
+      'Engage in interactive 1:1 or small group sessions with FOI.',
   },
   {
     step: '4',
@@ -83,7 +83,7 @@ const testimonials = [
     role: 'Parent of Grade 11 Student',
     country: 'USA',
     content:
-      'Manu\'s teaching transformed my daughter\'s approach to Physics. She went from struggling to scoring in the top 5% of her AP Physics class.',
+      'FOI\'s teaching transformed my daughter\'s approach to Physics. She went from struggling to scoring in the top 5% of her AP Physics class.',
   },
   {
     name: 'Ahmed Al-Mansouri',
@@ -97,7 +97,7 @@ const testimonials = [
     role: 'Parent of Grade 12 Student',
     country: 'Canada',
     content:
-      'Exceptional mentor! Manu helped our daughter secure admission to her dream engineering program with a strong foundation in STEM.',
+      'Exceptional mentor! FOI helped our daughter secure admission to her dream engineering program with a strong foundation in STEM.',
   },
 ];
 
@@ -148,7 +148,7 @@ export default function Home() {
         <div className="section-container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Why Parents Choose Manu
+              Why Parents Choose FOI
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               A proven track record of helping students master STEM subjects and

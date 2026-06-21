@@ -8,7 +8,14 @@ export default function Footer() {
       <div className="section-container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Manu Pande</h3>
+            <div className="flex flex-col items-start mb-4">
+              <img
+                src="/foi-logo.png"
+                alt="Future of International Classes"
+                className="h-16 w-16 object-contain mb-2"
+              />
+              <h3 className="text-lg font-bold">STEM Mentorship by Manu Pande</h3>
+            </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Premium STEM tutoring and mentorship for students in Grades 8-12.
               IIT-style problem solving approach with 15+ years of teaching
@@ -56,7 +63,7 @@ export default function Footer() {
                   to="/about"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  About Manu
+                  About FOI
                 </Link>
               </li>
               <li>
@@ -127,8 +134,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
           <p>
-            &copy; {currentYear} Manu Pande STEM Mentorship. All rights
-            reserved.
+            &copy; {currentYear} STEM Mentorship by Manu Pande. All rights reserved.
           </p>
         </div>
       </div>

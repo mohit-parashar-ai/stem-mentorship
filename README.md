@@ -1,6 +1,17 @@
-# Manu Pande STEM Tutoring & Mentorship Website
+# STEM Mentorship by Manu Pande
 
-A premium, production-ready website for Manu Pande's STEM tutoring and mentorship business, built with React, TypeScript, Tailwind CSS, and Supabase.
+A premium, production-ready website for STEM tutoring and mentorship business, built with React, TypeScript, Tailwind CSS, and Supabase.
+
+## 📚 Documentation
+
+**All detailed guides are in the [docs/](docs/) folder.**
+
+- 🚀 **[Get Started](docs/GET_STARTED.md)** - Start here!
+- ⚡ **[Quick Setup](docs/QUICKSTART.md)** - 10-minute setup guide
+- 🗄️ **[Database Setup](docs/SUPABASE_SETUP.md)** - Configure Supabase
+- 🎨 **[Add Logo](docs/LOGO_INSTRUCTIONS.md)** - Add your logo image
+- 🚢 **[Deploy](docs/DEPLOYMENT.md)** - Deploy to production
+- 📋 **[Full Documentation Index](docs/INDEX.md)** - All guides
 
 ## 🎯 Project Overview
 

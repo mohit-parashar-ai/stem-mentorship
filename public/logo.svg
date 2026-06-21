@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="95" fill="#2563EB" stroke="#0F172A" stroke-width="3"/>
+  <circle cx="100" cy="100" r="75" fill="none" stroke="#F59E0B" stroke-width="2"/>
+  
+  <!-- Rays -->
+  <g stroke="#F59E0B" stroke-width="4" stroke-linecap="round">
+    <line x1="100" y1="30" x2="100" y2="50"/>
+    <line x1="130" y1="35" x2="125" y2="53"/>
+    <line x1="155" y1="50" x2="145" y2="65"/>
+    <line x1="170" y1="70" x2="155" y2="80"/>
+    <line x1="170" y1="100" x2="150" y2="100"/>
+    <line x1="170" y1="130" x2="155" y2="120"/>
+    <line x1="155" y1="150" x2="145" y2="135"/>
+    <line x1="130" y1="165" x2="125" y2="147"/>
+    <line x1="100" y1="170" x2="100" y2="150"/>
+    <line x1="70" y1="165" x2="75" y2="147"/>
+    <line x1="45" y1="150" x2="55" y2="135"/>
+    <line x1="30" y1="130" x2="45" y2="120"/>
+    <line x1="30" y1="100" x2="50" y2="100"/>
+    <line x1="30" y1="70" x2="45" y2="80"/>
+    <line x1="45" y1="50" x2="55" y2="65"/>
+    <line x1="70" y1="35" x2="75" y2="53"/>
+  </g>
+  
+  <!-- Center -->
+  <circle cx="100" cy="100" r="15" fill="white"/>
+  
+  <!-- Text -->
+  <text x="100" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#0F172A" font-weight="bold">
+    PLACEHOLDER
+  </text>
+</svg>
